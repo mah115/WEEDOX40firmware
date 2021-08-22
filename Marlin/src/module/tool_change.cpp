@@ -252,16 +252,25 @@ void tool_change(const uint8_t new_tool, bool no_move /*=false*/)
             {
                 if (new_tool == 0)
                 {
-                    do_blocking_move_to_x(-30, 20);
+                    //mah115: wipe both sides
+                    //do_blocking_move_to_x(-30, 20);
+                    do_blocking_move_to_x((X1_MIN_POS+20)-15, 100);
+                    do_blocking_move_to_x((X1_MIN_POS+20)+15, 100);
+                    do_blocking_move_to_x((X1_MIN_POS+20)-15, 100);
                 }
                 else
                 {
-                    do_blocking_move_to_x(330, 20);
+                    //mah115: wipe both sides
+                    //do_blocking_move_to_x(330, 20);
+                    do_blocking_move_to_x((hotend_offset[1].x-20)+15, 100);
+                    do_blocking_move_to_x((hotend_offset[1].x-20)-15, 100);
+                    do_blocking_move_to_x((hotend_offset[1].x-20)+15, 100);
                 }
 
                 if (DEBUGGING(LEVELING))
                     DEBUG_POS("Move back", destination);
-                do_blocking_move_to(destination, planner.settings.max_feedrate_mm_s[X_AXIS]);
+                // Legodev: should not be needed, at least with cura and can cause trouble
+                //do_blocking_move_to(destination, planner.settings.max_feedrate_mm_s[X_AXIS]);
 
                 if (!wtvar_changing_tool)
                 {
