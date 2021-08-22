@@ -2,12 +2,7 @@
 ![image](http://www.weedo.ltd/wp-content/uploads/2021/04/970x300-ABanner1.jpg)
 
 ## Summary
-This is the repository that contains the community version firmware for the WEEDO X40 3D Printer. 
-
-The framework of the firmware is based on the Marlin 2.0.x version. 
-We fixed some bugs in the dual x carriage modules.
-
-The user interaction and network communication modules are developed by WEEDO3D.
+This is the repository that contains the community version firmware for the WEEDO X40 3D Printer.  The framework of the firmware is based on the Marlin 2.0.x version.  We fixed some bugs in the dual x carriage modules. The user interaction and network communication modules are developed by WEEDO3D.
 
 - Community development discussions take place here: https://discord.gg/zXbhdnQyYH
 
@@ -20,10 +15,8 @@ M301 E1 P9 I0.34 D30
 M500
 ```
 - Precompiled binary file is in **WEEDOX40_firmware\.pio\build\stm32_vet6\firmware.bin**
-- To go back to the official firmware, load **X40firmware_factory.bin**
-- When using Octoprint, Pronterface etc. set the serial baudrate to 230400.
-- To use it with Linux/Raspberry Pi, you need to replace the CH340 driver: https://learn.sparkfun.com/tutorials/how-to-install-ch340-drivers/all#linux
-   - Also run 'sudo depmod' afterwards to make it load at startup.
+- To go back to the official firmware, load **Release/X40_V1.2.0_Community_to_Official.bin**
+- To use USB with Linux/Raspberry Pi, you need to replace the CH340 driver: https://github.com/mah115/WEEDO_X40_files/blob/main/CH34x_raspi_driver_installation.md
 
 ## Major differences from the official firmware:
 - This firmware does not have the SD card firmware update capability, use the USB to load (see below)
