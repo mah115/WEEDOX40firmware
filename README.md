@@ -9,6 +9,31 @@ We fixed some bugs in the dual x carriage modules.
 
 The user interaction and network communication modules are developed by WEEDO3D.
 
+- Community development discussions take place here: https://discord.gg/zXbhdnQyYH
+
+## Instructions:
+- Upload firmware using Weedo's firmware flasher (see below)
+- You will also need update the PID gains in EEPROM after flashing, run gcode:
+```
+M301 E0 P9 I0.34 D30
+M301 E1 P9 I0.34 D30
+M500
+```
+- Precompiled binary file is in **WEEDOX40_firmware\.pio\build\stm32_vet6\firmware.bin**
+- To go back to the official firmware, load **X40firmware_factory.bin**
+- When using Octoprint, Pronterface etc. set the serial baudrate to 230400.
+- To use it with Linux/Raspberry Pi, you need to replace the CH340 driver: https://learn.sparkfun.com/tutorials/how-to-install-ch340-drivers/all#linux
+   - Also run 'sudo depmod' afterwards to make it load at startup.
+
+## Major differences from the official firmware:
+- This firmware does not have the SD card firmware update capability, use the USB to load (see below)
+- Improved jog mode responsiveness and made left/right arrows consistent with coordinate increase/decrease.
+- Fixed excessive hotend temp overshoot by modifying PID controller.
+- G2/G3 implementation is updated from a newer version of Marlin which fixes a bug that results in incorrect move speeds.  This is needed to make it work well with Arc Welder.
+- Z-axis offset adjustment resolution increased from 0.1mm to 0.02mm.
+- Extruder will brush both sides of the nozzle before printing.
+- Extruder nozzle will stay at home position while heating up instead of hovering over the part.
+- Relaxed tolerances for temperature hysteresis.
 
 ## Compile requirements
 
