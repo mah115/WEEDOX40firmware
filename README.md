@@ -16,6 +16,7 @@ M500
 ```
 - Precompiled binary file is in **WEEDOX40_firmware\.pio\build\stm32_vet6\firmware.bin**
 - To go back to the official firmware, load **Release/X40_V1.2.0_Community_to_Official.bin**
+- To use USB, use buad rate 115200
 - To use USB with Linux/Raspberry Pi, you need to replace the CH340 driver: https://github.com/mah115/WEEDO_X40_files/blob/main/CH34x_raspi_driver_installation.md
 
 ## Major differences from the official firmware:
@@ -27,6 +28,7 @@ M500
 - Extruder will brush both sides of the nozzle before printing.
 - Extruder nozzle will stay at home position while heating up instead of hovering over the part.
 - Relaxed tolerances for temperature hysteresis.
+- Fixe issue where right extruder would crash into left when going to X=0.
 
 ## Compile requirements
 
