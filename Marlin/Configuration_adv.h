@@ -559,7 +559,7 @@
 #define DUAL_X_CARRIAGE
 #if ENABLED(DUAL_X_CARRIAGE)
   #define X1_MIN_POS X_MIN_POS  // set minimum to ensure first x-carriage doesn't hit the parked second X-carriage
-  #define X1_MAX_POS 305 // set maximum to ensure first x-carriage doesn't hit the parked second X-carriage
+  #define X1_MAX_POS 300 // set maximum to ensure first x-carriage doesn't hit the parked second X-carriage
   #define X2_MIN_POS 0     // set minimum to ensure second x-carriage doesn't hit the parked first X-carriage
   #define X2_MAX_POS  353 //  355    // set maximum to the distance between toolheads when both heads are homed
   #define X2_HOME_DIR 1     // the second X-carriage always homes to the maximum endstop position
