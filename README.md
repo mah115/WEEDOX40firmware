@@ -28,7 +28,7 @@ M500
 - Extruder will brush both sides of the nozzle before printing.
 - Extruder nozzle will stay at home position while heating up instead of hovering over the part.
 - Relaxed tolerances for temperature hysteresis.
-- Fixe issue where right extruder would crash into left when going to X=0.
+- Fixed issue where right extruder would crash into left when going to X=0.  This fix may cause the sample Gcode on the SD card to not print properly due to a bug in their start gcode.  To fix, add a line **G28 X** after **G1 X-47** in the start gcode. 
 
 ## Compile requirements
 
