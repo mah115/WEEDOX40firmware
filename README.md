@@ -6,6 +6,8 @@ This is the repository that contains the community version firmware for the WEED
 
 - Community development discussions take place here: https://discord.gg/zXbhdnQyYH
 
+- This firmware is incompatible with WiiBuilder.  You will need to delete the line ```G1 X-47 F3000``` from the start gcode in WiiBuilder generated gcode files.
+
 ## Instructions:
 - Upload firmware using Weedo's firmware flasher (see below)
 - You will also need update the PID gains in EEPROM after flashing, run gcode:
