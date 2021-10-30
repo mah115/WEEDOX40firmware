@@ -6,7 +6,7 @@ This is the repository that contains the community version firmware for the WEED
 
 - Community development discussions take place here: https://discord.gg/zXbhdnQyYH
 
-- This firmware is incompatible with WiiBuilder/pre-sliced gcode on the SD card.  (See https://github.com/mah115/WEEDOX40firmware/issues for more info).  You will need to delete the line ```G1 X-47 F3000``` from the start gcode in WiiBuilder generated gcode files.
+- This firmware is incompatible with WiiBuilder/pre-sliced gcode on the SD card.  (See https://github.com/mah115/WEEDOX40firmware/issues/1 for more info).  You will need to delete the line ```G1 X-47 F3000``` from the start gcode in WiiBuilder generated gcode files.
 
 ## Instructions:
 - Upload firmware using Weedo's firmware flasher (see below)
