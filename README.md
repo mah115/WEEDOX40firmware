@@ -23,6 +23,7 @@ M500
 
 ## Major differences from the official firmware:
 - This firmware does not have the SD card firmware update capability, use the USB to load (see below)
+- Enabled arc support
 - Improved jog mode responsiveness and made left/right arrows consistent with coordinate increase/decrease.
 - Fixed excessive hotend temp overshoot by modifying PID controller.
 - G2/G3 implementation is updated from a newer version of Marlin which fixes a bug that results in incorrect move speeds.  This is needed to make it work well with Arc Welder.
