@@ -235,7 +235,7 @@ void tool_change(const uint8_t new_tool, bool no_move /*=false*/)
         // Return to position and lower again
         if (!no_move && IsRunning())
         {
-            if (should_swap && !too_cold)
+            if (should_swap && !too_cold  && (toolchange_settings.x40_toolchange_config & 1))
             {
                 do_pause_e_move(toolchange_settings.swap_length, MMM_TO_MMS(toolchange_settings.prime_speed));
                 do_pause_e_move(toolchange_settings.extra_prime, 6);
@@ -248,7 +248,7 @@ void tool_change(const uint8_t new_tool, bool no_move /*=false*/)
             apply_motion_limits(destination);
 
             // Should the nozzle move back to the old position?
-            if (can_move_away)
+            if (can_move_away && (toolchange_settings.x40_toolchange_config & 1))
             {
                 if (new_tool == 0)
                 {
