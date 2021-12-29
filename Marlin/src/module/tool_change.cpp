@@ -250,7 +250,7 @@ void tool_change(const uint8_t new_tool, bool no_move /*=false*/)
             // Should the nozzle move back to the old position?
             if (can_move_away && (toolchange_settings.x40_toolchange_config & 1))
             {
-                if (new_tool == 0)
+                if (new_tool == 0 && (toolchange_settings.x40_toolchange_config & 2))
                 {
                     //mah115: wipe both sides
                     //do_blocking_move_to_x(-30, 20);
