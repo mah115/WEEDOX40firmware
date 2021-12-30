@@ -186,7 +186,9 @@ void tool_change(const uint8_t new_tool, bool no_move /*=false*/)
         else
         {
 #if ENABLED(ADVANCED_PAUSE_FEATURE)
-            do_pause_e_move(-toolchange_settings.swap_length, MMM_TO_MMS(toolchange_settings.retract_speed));
+            if (toolchange_settings.x40_toolchange_config & 1) {
+                do_pause_e_move(-toolchange_settings.swap_length, MMM_TO_MMS(toolchange_settings.retract_speed));
+            }
 #else
             current_position.e -= toolchange_settings.swap_length / planner.e_factor[old_tool];
             planner.buffer_line(current_position, MMM_TO_MMS(toolchange_settings.retract_speed), old_tool);
@@ -248,23 +250,29 @@ void tool_change(const uint8_t new_tool, bool no_move /*=false*/)
             apply_motion_limits(destination);
 
             // Should the nozzle move back to the old position?
-            if (can_move_away && (toolchange_settings.x40_toolchange_config & 1))
+            if (can_move_away)
             {
-                if (new_tool == 0 && (toolchange_settings.x40_toolchange_config & 2))
+                if (new_tool == 0 )
                 {
-                    //mah115: wipe both sides
-                    //do_blocking_move_to_x(-30, 20);
-                    do_blocking_move_to_x((X1_MIN_POS+20)-15, 100);
-                    do_blocking_move_to_x((X1_MIN_POS+20)+15, 100);
-                    do_blocking_move_to_x((X1_MIN_POS+20)-15, 100);
+                    if (toolchange_settings.x40_toolchange_config & 2)
+                    {
+                        //mah115: wipe both sides
+                        //do_blocking_move_to_x(-30, 20);
+                        do_blocking_move_to_x((X1_MIN_POS+20)-15, 100);
+                        do_blocking_move_to_x((X1_MIN_POS+20)+15, 100);
+                        do_blocking_move_to_x((X1_MIN_POS+20)-15, 100);
+                    }
                 }
                 else
                 {
-                    //mah115: wipe both sides
-                    //do_blocking_move_to_x(330, 20);
-                    do_blocking_move_to_x((hotend_offset[1].x-20)+15, 100);
-                    do_blocking_move_to_x((hotend_offset[1].x-20)-15, 100);
-                    do_blocking_move_to_x((hotend_offset[1].x-20)+15, 100);
+                    if (toolchange_settings.x40_toolchange_config & 2)
+                    {
+                        //mah115: wipe both sides
+                        //do_blocking_move_to_x(330, 20);
+                        do_blocking_move_to_x((hotend_offset[1].x-20)+15, 100);
+                        do_blocking_move_to_x((hotend_offset[1].x-20)-15, 100);
+                        do_blocking_move_to_x((hotend_offset[1].x-20)+15, 100);
+                    }
                 }
 
                 if (DEBUGGING(LEVELING))
