@@ -32,6 +32,9 @@ M500
 - Extruder nozzle will stay at home position while heating up instead of hovering over the part.
 - Relaxed tolerances for temperature hysteresis.
 - Fixed issue where right extruder would crash into left when going to X=0.  This fix may cause the sample Gcode on the SD card to not print properly due to a bug in their start gcode.  To fix, add a line **G28 X** after **G1 X-47** in the start gcode. 
+- Added M922/M923 function from https://github.com/TeaObvious/WEEDOX40firmware
+  - M922 S0/S1 - Turn automatic filament extrusion Off/On (S1 is the default behavior of the original Printer).
+  - M923 S0/S1 - Turn multiple nozzle wipes Off/On (S0 will not wipe both sides, S1 will wipe both sides)
 
 ## Compile requirements
 
